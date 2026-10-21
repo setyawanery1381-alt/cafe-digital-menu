@@ -1,0 +1,24 @@
+{
+  "name": "cafe-digital-menu",
+  "version": "1.0.0",
+  "description": "High-performance digital menu book web app & CMS inspired by book.poutercoffee.id",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "digital-menu",
+    "cafe-menu",
+    "pdf-viewer",
+    "qr-menu",
+    "pwa"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

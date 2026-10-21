@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Pengelola — Buku Menu Digital</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/default-logo.svg">
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+
+  <!-- 1. LOGIN OVERLAY (PIN AUTH) -->
+  <div id="loginWrap" class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+        </svg>
+      </div>
+      <h2 class="login-title">Admin Dashboard</h2>
+      <p class="login-subtitle">Masukkan PIN untuk mengelola menu digital kafe Anda.</p>
+      
+      <form id="loginForm">
+        <input id="pinInput" class="pin-input" type="password" maxlength="6" placeholder="••••" required autocomplete="off">
+        <button type="submit" class="btn-primary">Masuk ke Panel</button>
+      </form>
+      <div id="loginError" style="color:var(--admin-danger); font-size:13px; font-weight:600; margin-top:14px;"></div>
+      <div style="font-size:11px; color:var(--admin-text-muted); margin-top:16px;">
+        Default PIN: <b>1234</b> (dapat diubah di menu Pengaturan)
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN APPLICATION CONTAINER -->
+  <div id="appContainer" class="app-container" style="display: none;">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img id="adminLogo" src="/assets/default-logo.svg" alt="Logo">
+        <h2 id="adminCafeTitle">Pouter Coffee</h2>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item active" data-tab="tabOverview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9"></rect>
+            <rect x="14" y="3" width="7" height="5"></rect>
+            <rect x="14" y="12" width="7" height="9"></rect>
+            <rect x="3" y="16" width="7" height="5"></rect>
+          </svg>
+          <span>Ringkasan</span>
+        </li>
+
+        <li class="nav-item" data-tab="tabUpload">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span>Unggah Menu PDF</span>
+        </li>
+
+        <li class="nav-item" data-tab="tabQr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>QR Stand Meja</span>
+        </li>
+
+        <li class="nav-item" data-tab="tabSettings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>Pengaturan Kafe</span>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <a class="btn-sidebar-action" href="/" target="_blank" title="Lihat Tampilan Menu Pelanggan">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          <span>Buka Menu Live</span>
+        </a>
+        <button id="logoutBtn" class="btn-sidebar-action" style="color:var(--admin-danger);">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Keluar (Logout)</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- TAB 1: OVERVIEW -->
+      <section id="tabOverview" class="tab-section">
+        <div class="page-header">
+          <h1>Ringkasan & Status</h1>
+          <p>Pantau performa dan informasi buku menu digital kafe Anda.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">👁️</div>
+            <div class="stat-info">
+              <h4>Total Kunjungan</h4>
+              <div id="statTotalViews" class="stat-val">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-info">
+              <h4>Pengunjung Hari Ini</h4>
+              <div id="statTodayViews" class="stat-val">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📄</div>
+            <div class="stat-info">
+              <h4>Ukuran PDF Menu</h4>
+              <div id="statPdfSize" class="stat-val">-</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-info">
+              <h4>Terakhir Diperbarui</h4>
+              <div id="statPdfVersion" class="stat-val" style="font-size:15px; font-weight:700;">-</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h3 class="card-title">Aksi Cepat</h3>
+          <p class="card-desc">Kelola buku menu atau cetak stand meja untuk dipasang di kafe Anda.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn-primary" style="width:auto; padding:10px 18px;" onclick="document.querySelector('[data-tab=tabUpload]').click()">
+              + Unggah PDF Menu Baru
+            </button>
+            <button class="btn-primary" style="width:auto; padding:10px 18px; background:rgba(255,255,255,0.1);" onclick="document.querySelector('[data-tab=tabQr]').click()">
+              🖨️ Buat QR Code Meja
+            </button>
+            <a class="btn-primary" style="width:auto; padding:10px 18px; background:rgba(255,255,255,0.1); text-decoration:none; display:inline-flex; align-items:center;" href="/menu.pdf" target="_blank">
+              📥 Unduh PDF Aktif
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: UPLOAD PDF MENU -->
+      <section id="tabUpload" class="tab-section" style="display: none;">
+        <div class="page-header">
+          <h1>Unggah Menu PDF</h1>
+          <p>Ganti menu lama dengan file PDF terbaru Anda. File akan langsung tampil di HP pelanggan saat di-scan.</p>
+        </div>
+
+        <div class="admin-card">
+          <input id="pdfFileInput" type="file" accept="application/pdf" style="display:none;">
+          <div id="dropzone" class="dropzone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <h3>Tarik & Letakkan File PDF Menu di sini</h3>
+            <p>atau klik area ini untuk memilih file dari komputer / HP Anda (Maks. 50 MB)</p>
+          </div>
+
+          <div id="uploadStatus" style="margin-top: 18px; display: none;"></div>
+        </div>
+
+        <div class="admin-card">
+          <h3 class="card-title">💡 Tips Menu Optimal</h3>
+          <ul style="color:var(--admin-text-muted); font-size:13.5px; line-height:1.7; padding-left:20px;">
+            <li>Gunakan resolusi proporsional (rekomendasi orientasi Portrait atau ukuran A4/A5).</li>
+            <li>Pastikan ukuran file di bawah 10 MB agar loading di HP pelanggan dengan sinyal seluler berjalan super cepat.</li>
+            <li>Sistem otomatis memperbarui versi hash (<i>cache busting</i>) sehingga pelanggan tidak akan melihat menu kadaluwarsa.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TAB 3: QR CODE GENERATOR -->
+      <section id="tabQr" class="tab-section" style="display: none;">
+        <div class="page-header">
+          <h1>Generator QR Stand Meja</h1>
+          <p>Cetak QR Code khusus untuk masing-masing meja kafe. Ketika pelanggan scan, nomor meja langsung terdeteksi otomatis.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <!-- Setting Meja -->
+          <div class="admin-card">
+            <h3 class="card-title">Konfigurasi Nomor Meja</h3>
+            <div class="form-group">
+              <label>Nomor / Nama Meja:</label>
+              <input id="qrTableInput" class="form-control" type="text" value="01" placeholder="Contoh: 01, VIP-A, Bar-2">
+            </div>
+            <button id="generateQrBtn" class="btn-primary" style="margin-bottom:12px;">Perbarui QR Code</button>
+            <button id="printQrBtn" class="btn-primary" style="background:#10b981;">🖨️ Cetak Kartu Stand Meja</button>
+          </div>
+
+          <!-- Preview Stand Meja -->
+          <div class="admin-card" style="text-align: center;">
+            <h3 class="card-title" style="margin-bottom: 16px;">Pratinjau Stand Meja</h3>
+            <div class="qr-preview-container">
+              <div id="qrPrintTitle" class="qr-cafe-name">Pouter Coffee</div>
+              <div id="qrPrintTable" class="qr-table-label">MEJA 01</div>
+              <div id="qrCodeBox" class="qr-code-box"></div>
+              <div class="qr-scan-note">SCAN UNTUK BUKU MENU DIGITAL</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: SETTINGS -->
+      <section id="tabSettings" class="tab-section" style="display: none;">
+        <div class="page-header">
+          <h1>Pengaturan Kafe & Tampilan</h1>
+          <p>Sesuaikan nama kafe, logo, tema warna, nomor WhatsApp kasir/waiter, dan keamanan.</p>
+        </div>
+
+        <div class="admin-card">
+          <form id="settingsForm">
+            <h3 class="card-title" style="margin-bottom:16px;">Identitas Kafe</h3>
+
+            <div class="form-group">
+              <label>Nama Kafe / Resto:</label>
+              <input id="cafeNameInput" class="form-control" type="text" required>
+            </div>
+
+            <div class="form-group">
+              <label>Tagline / Subjudul:</label>
+              <input id="taglineInput" class="form-control" type="text">
+            </div>
+
+            <div class="form-group">
+              <label>Logo Kafe (PNG/JPG/SVG):</label>
+              <div style="display:flex; align-items:center; gap:16px;">
+                <img id="logoPreview" src="/logo" alt="Logo Preview" style="width:52px; height:52px; object-fit:contain; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid var(--admin-border);">
+                <input id="logoFileInput" type="file" accept="image/*" class="form-control" style="padding:8px;">
+              </div>
+            </div>
+
+            <h3 class="card-title" style="margin:24px 0 16px 0;">Tema Warna</h3>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div class="form-group">
+                <label>Warna Utama (Brand Accent):</label>
+                <div class="color-input-wrap">
+                  <input id="primaryColorInput" class="color-preview" type="color" value="#02859E">
+                  <input id="primaryColorHex" class="form-control" type="text" value="#02859E">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Warna Latar Belakang (Dark BG):</label>
+                <div class="color-input-wrap">
+                  <input id="bgColorInput" class="color-preview" type="color" value="#2D2926">
+                  <input id="bgColorHex" class="form-control" type="text" value="#2D2926">
+                </div>
+              </div>
+            </div>
+
+            <h3 class="card-title" style="margin:24px 0 16px 0;">Kontak & Layanan</h3>
+
+            <div class="form-group">
+              <label>Nomor WhatsApp Kasir / Waiter (dengan kode negara, cth: 6281234567890):</label>
+              <input id="whatsappInput" class="form-control" type="text" placeholder="62812xxxxxxxx">
+            </div>
+
+            <div class="form-group">
+              <label>Username Instagram (tanpa @):</label>
+              <input id="instagramInput" class="form-control" type="text" placeholder="poutercoffee">
+            </div>
+
+            <h3 class="card-title" style="margin:24px 0 16px 0;">Keamanan Panel Admin</h3>
+
+            <div class="form-group">
+              <label>Ganti PIN Masuk Admin (Minimal 4 digit angka):</label>
+              <input id="newPinInput" class="form-control" type="password" maxlength="8" placeholder="Biarkan kosong jika tidak ingin mengubah PIN">
+            </div>
+
+            <button type="submit" class="btn-primary" style="margin-top:12px;">Simpan Semua Perubahan</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- QR Code Library -->
+  <script src="/assets/qrcode.min.js"></script>
+  <!-- Admin Script -->
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

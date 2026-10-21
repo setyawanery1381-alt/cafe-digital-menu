@@ -1,0 +1,17 @@
+{
+  "cafeName": "Pouter Coffee & Eatery",
+  "tagline": "Buku Menu Digital",
+  "primaryColor": "#02859E",
+  "bgColor": "#2D2926",
+  "whatsappNumber": "6281234567890",
+  "instagram": "poutercoffee",
+  "googleMaps": "https://maps.google.com",
+  "allowDownload": true,
+  "adminPin": "1234",
+  "pdfVersion": 1788404579073,
+  "stats": {
+    "totalViews": 129,
+    "todayViews": 15,
+    "lastViewDate": "2026-10-21"
+  }
+}
