@@ -1,8 +1,17 @@
 # ☕ Cafe Digital Menu Book & Admin CMS
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/setyawanery1381-alt/cafe-digital-menu)
+
 Aplikasi Web Buku Menu Digital Interaktif untuk Kafe & Restoran, terinspirasi langsung dari arsitektur performa tinggi **book.poutercoffee.id**.
 
 Pelanggan cukup memindai (scan) QR Code di meja mereka menggunakan kamera HP, dan buku menu akan terbuka secara instan, halus, dan interaktif tanpa perlu mengunduh file PDF secara manual!
+
+---
+
+## 🚀 Live Demo & Deployment
+
+- **Repository GitHub**: [https://github.com/setyawanery1381-alt/cafe-digital-menu](https://github.com/setyawanery1381-alt/cafe-digital-menu)
+- **Deploy 1-Click ke Vercel**: Klik tombol **Deploy with Vercel** di atas atau buka [Vercel New Project](https://vercel.com/new/clone?repository-url=https://github.com/setyawanery1381-alt/cafe-digital-menu).
 
 ---
 
@@ -38,67 +47,25 @@ Pelanggan cukup memindai (scan) QR Code di meja mereka menggunakan kamera HP, da
 
 ---
 
-## 🚀 Panduan Menjalankan Aplikasi
+## 💻 Panduan Menjalankan Secara Lokal
 
-### 1. Instalasi Dependensi
-Buka terminal di direktori proyek dan jalankan:
-```bash
-npm install
-```
-
-### 2. Menjalankan Server
+### 1. Jalankan Server
 ```bash
 npm start
 ```
 
-### 3. Mengakses Aplikasi
+### 2. Akses Aplikasi
 - **Buku Menu Pelanggan**: [http://localhost:3000](http://localhost:3000)
 - **Simulasi Meja Tertentu**: [http://localhost:3000/?meja=05](http://localhost:3000/?meja=05)
 - **Dashboard Admin CMS**: [http://localhost:3000/admin](http://localhost:3000/admin) *(PIN Default: `1234`)*
 
 ---
 
-## 📁 Struktur Direktori
+## 🌐 Panduan Deploy ke Vercel
 
-```text
-cafe-digital-menu/
-├── server.js               # Express API & Static File Server
-├── package.json            # Dependensi dan script project
-├── data/
-│   └── settings.json       # Penyimpanan konfigurasi kafe & statistik (Zero-DB)
-├── uploads/
-│   ├── menu.pdf            # File PDF menu aktif yang ditampilkan ke pelanggan
-│   └── logo.png            # File logo kafe yang diunggah
-├── public/
-│   ├── index.html          # Halaman penampil menu untuk pelanggan
-│   ├── app.js              # PDF Engine interaktif (Scroll, Page, Pinch Zoom, Sharpening)
-│   ├── style.css           # Desain modern kafe dengan safe-area mobile insets
-│   ├── assets/
-│   │   ├── pdf.min.js      # Library PDF.js offline-ready
-│   │   ├── pdf.worker.min.js
-│   │   ├── qrcode.min.js   # Generator QR code
-│   │   └── default-logo.svg
-│   └── admin/
-│       ├── index.html      # Dashboard Admin CMS
-│       ├── admin.js        # Logika upload PDF, setting, & cetak QR meja
-│       └── admin.css       # Desain elegan dashboard admin
-```
-
----
-
-## 🌐 Panduan Deploy ke Internet (Production)
-
-### Opsi A: Deploy ke VPS / cPanel / Node.js Hostinger
-1. Unggah seluruh isi folder proyek ke hosting Anda.
-2. Pastikan versi Node.js minimal v18 atau v20.
-3. Jalankan `npm install` lalu jalankan service dengan PM2:
-   ```bash
-   npm install -g pm2
-   pm2 start server.js --name "menu-pouter"
-   ```
-
-### Opsi B: Deploy ke Cloud Gratis (Render / Railway)
-1. Hubungkan repository GitHub Anda ke [Render.com](https://render.com) atau [Railway.app](https://railway.app).
-2. Set Build Command: `npm install`
-3. Set Start Command: `node server.js`
-4. Aplikasi akan langsung aktif dengan URL publik HTTPS gratis!
+Proyek ini sudah dikonfigurasi dengan `vercel.json` dan serverless entrypoint `api/index.js`:
+1. Buka [https://vercel.com/new](https://vercel.com/new).
+2. Login dengan akun GitHub Anda (`setyawanery1381-alt`).
+3. Cari repository **`cafe-digital-menu`** lalu klik **Import**.
+4. Biarkan konfigurasi default, lalu klik **Deploy**.
+5. Dalam ~1 menit, aplikasi buku menu digital Anda sudah live di internet dengan domain HTTPS gratis!
