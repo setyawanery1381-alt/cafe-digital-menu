@@ -26,8 +26,8 @@ function getSettings() {
     console.error('Error reading settings:', err);
   }
   return {
-    cafeName: 'Pouter Coffee & Eatery',
-    tagline: 'Buku Menu Digital',
+    cafeName: 'MATERNAL COFFE',
+    tagline: 'Specialty Coffee & Eatery',
     primaryColor: '#02859E',
     bgColor: '#2D2926',
     whatsappNumber: '6281234567890',
@@ -106,7 +106,7 @@ app.get('/api/config', (req, res) => {
     googleMaps: s.googleMaps || '',
     allowDownload: s.allowDownload !== false,
     pdfVersion: s.pdfVersion || Date.now(),
-    hasLogo: fs.existsSync(path.join(UPLOADS_DIR, 'logo.png')) || fs.existsSync(path.join(UPLOADS_DIR, 'logo.jpg')) || fs.existsSync(path.join(UPLOADS_DIR, 'logo.webp'))
+    hasLogo: fs.existsSync(path.join(UPLOADS_DIR, 'logo.png')) || fs.existsSync(path.join(UPLOADS_DIR, 'logo.jpg')) || fs.existsSync(path.join(UPLOADS_DIR, 'logo.jfif')) || fs.existsSync(path.join(UPLOADS_DIR, 'logo.webp'))
   });
 });
 
@@ -144,7 +144,7 @@ function servePdf(req, res) {
 
 // Cafe Logo endpoint
 app.get('/logo', (req, res) => {
-  const extensions = ['.png', '.jpg', '.jpeg', '.webp', '.svg'];
+  const extensions = ['.png', '.jpg', '.jpeg', '.jfif', '.webp', '.svg'];
   for (const ext of extensions) {
     const filename = 'logo' + ext;
     if (fs.existsSync(path.join(UPLOADS_DIR, filename))) {

@@ -1,17 +1,17 @@
 {
-  "cafeName": "Pouter Coffee & Eatery",
-  "tagline": "Buku Menu Digital",
+  "cafeName": "MATERNAL COFFE",
+  "tagline": "Specialty Coffee & Eatery",
   "primaryColor": "#02859E",
   "bgColor": "#2D2926",
   "whatsappNumber": "6281234567890",
-  "instagram": "poutercoffee",
+  "instagram": "maternalcoffe",
   "googleMaps": "https://maps.google.com",
   "allowDownload": true,
   "adminPin": "1234",
-  "pdfVersion": 1788404579073,
+  "pdfVersion": 1788404599999,
   "stats": {
-    "totalViews": 129,
-    "todayViews": 15,
+    "totalViews": 142,
+    "todayViews": 28,
     "lastViewDate": "2026-10-21"
   }
 }
