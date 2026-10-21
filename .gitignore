@@ -4,3 +4,6 @@ node_modules
 Thumbs.db
 .vercel
 scripts/test-server.js
+extracted_pages/
+processed_pages/
+scratch_renders/
