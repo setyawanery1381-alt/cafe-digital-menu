@@ -178,7 +178,7 @@
     instagramInput.value = s.instagram || '';
 
     // QR live defaults
-    if (qrPrintTitle) qrPrintTitle.textContent = s.cafeName || 'MATERNAL COFFE';
+    if (qrPrintTitle) qrPrintTitle.textContent = s.cafeName || 'Maternal Coffee';
   }
 
   // Color Pickers sync
@@ -325,7 +325,7 @@
 
     if (qrPrintTable) qrPrintTable.textContent = `MEJA ${tableNum}`;
     if (qrPrintTitle && cafeData && cafeData.settings) {
-      qrPrintTitle.textContent = cafeData.settings.cafeName || 'MATERNAL COFFE';
+      qrPrintTitle.textContent = cafeData.settings.cafeName || 'Maternal Coffee';
     }
 
     qrCodeBox.innerHTML = '';
@@ -349,7 +349,7 @@
     const printWindow = window.open('', '_blank');
     const qrCanvas = qrCodeBox.querySelector('canvas') || qrCodeBox.querySelector('img');
     const qrSrc = qrCanvas ? (qrCanvas.toDataURL ? qrCanvas.toDataURL() : qrCanvas.src) : '';
-    const cafeName = (cafeData && cafeData.settings && cafeData.settings.cafeName) ? cafeData.settings.cafeName : 'MATERNAL COFFE';
+    const cafeName = (cafeData && cafeData.settings && cafeData.settings.cafeName) ? cafeData.settings.cafeName : 'Maternal Coffee';
 
     printWindow.document.write(`
       <!DOCTYPE html>

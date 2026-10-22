@@ -26,7 +26,7 @@ function getSettings() {
     console.error('Error reading settings:', err);
   }
   return {
-    cafeName: 'MATERNAL COFFE',
+    cafeName: 'Maternal Coffee',
     tagline: 'Specialty Coffee & Eatery',
     primaryColor: '#02859E',
     bgColor: '#2D2926',

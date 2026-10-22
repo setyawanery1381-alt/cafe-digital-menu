@@ -1,17 +1,17 @@
 {
-  "cafeName": "MATERNAL COFFE",
+  "cafeName": "Maternal Coffee",
   "tagline": "Specialty Coffee & Eatery",
   "primaryColor": "#02859E",
   "bgColor": "#2D2926",
   "whatsappNumber": "6281234567890",
-  "instagram": "maternalcoffe",
+  "instagram": "maternalcoffee",
   "googleMaps": "https://maps.google.com",
   "allowDownload": true,
   "adminPin": "1234",
-  "pdfVersion": 1792565480844,
+  "pdfVersion": 1792567890000,
   "stats": {
-    "totalViews": 142,
-    "todayViews": 28,
+    "totalViews": 164,
+    "todayViews": 36,
     "lastViewDate": "2026-10-21"
   }
 }
